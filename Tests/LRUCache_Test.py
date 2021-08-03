@@ -4,7 +4,7 @@ from LRUCache import LRUCache
 import unittest
 
 
-class LRUCacheUnitTests(unittest.TestCase):
+class LRUCache_Test(unittest.TestCase):
 
     def setUp(self):
         self.lruCache = LRUCache()
@@ -12,7 +12,7 @@ class LRUCacheUnitTests(unittest.TestCase):
     def test_empty_cache(self):
         self.assertEqual(self.lruCache.get(1), None, 'Should be None')
 
-    def test_capacity(self):
+    def test_length(self):
         self.lruCache = LRUCache(2)
         self.lruCache.put(1,1)
         self.lruCache.put(2,2)

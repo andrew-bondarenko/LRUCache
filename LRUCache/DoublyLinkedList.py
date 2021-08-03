@@ -4,20 +4,20 @@ from Node import Node
 class DoublyLinkedList(object):
     def __init__(self):
         self.root = Node(None)
-        self.capacity = 0
+        self.length = 0
 
         self.root.next = self.root
         self.root.previous = self.root
 
     # Add a new node and move it to the front
-    def unshift(self, data):
+    def add_head(self, data):
         node = Node(data)
 
         # New Node, add it to the front
         self.move_to_front(node)
 
-        # Increase capacity by 1
-        self.capacity += 1
+        # Increase length by 1
+        self.length += 1
 
         return node 
 
@@ -60,15 +60,22 @@ class DoublyLinkedList(object):
 
     # Remove the last node in the list
     def remove_tail(self):
-        if self.capacity == 0:
+        if self.length == 0:
             return None 
         
         # Isolate the least recently used item
-        removed_node = self.isolate(self.root.previous)
+        remove_node = self.isolate(self.root.previous)
 
-        # Reduce capacity by 1 now that we removed the tail
-        self.capacity -= 1
+        # Reduce length by 1 now that we removed the tail node
+        self.length -= 1
         
-        return removed_node
+        return remove_node
 
-    
+    def remove_node(self, node):
+        # Isolate the node
+        remove_node = self.isolate(node)
+
+        # Now that we removed the node, update length 
+        self.length -= 1
+        
+        return remove_node

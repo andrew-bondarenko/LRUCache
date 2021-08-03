@@ -20,12 +20,12 @@ class LRUCache(object):
             return
          
         # Key did not exist, if the cache is full, remove least recently used key
-        if self.dllist.capacity == self.max_size:
+        if self.dllist.length == self.max_size:
             lru_node = self.dllist.remove_tail()
             del self.cache_nodes[lru_node.data.key]
 
         # Add the key to the front of our cache
-        self.cache_nodes[key] = self.dllist.unshift(KVPair(key, value))
+        self.cache_nodes[key] = self.dllist.add_head(KVPair(key, value))
 
     def get(self, key):
         node = self.cache_nodes.get(key, None)
@@ -46,13 +46,9 @@ class LRUCache(object):
             return
 
         # Key exists, remove it from the Cache
-        delete_node = self.dllist.isolate(node)
-        del self.cache_nodes[delete_node.data.key]
-        
-        # Now that we removed the node from the cache, update capacity 
-        self.dllist.capacity -= 1
+        remove_node = self.dllist.remove_node(node)
+        del self.cache_nodes[remove_node.data.key]
 
     def reset(self):
-        self.max_size = 6
         self.dllist = DoublyLinkedList()
         self.cache_nodes = {}

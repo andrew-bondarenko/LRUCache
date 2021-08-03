@@ -1,13 +1,13 @@
 # LRUCache
 LRU Cache in Python!
 
-This implementation of the LRU Cache utilizes 2 data strutures: a Doubly Linked List and a Hash map. 
+This implementation of the LRU Cache utilizes 2 data strutures: a Circular Doubly Linked List and a Hash map. 
 
 When the Cache is full, the least recently used (LRU) item will be evicted.
 
 # Project Structure
 In this project, there are 2 main sub-folders:
-- `.\LRU Cache` - contains all of the Python scripts
+- `.\LRUCache` - contains all of the Python scripts
 - `.\Tests` - contains all of the testing scripts 
 
 # How to run the code
